@@ -8,41 +8,33 @@ import org.springframework.web.context.annotation.SessionScope;
 @Service
 @SessionScope
 public class CalculateService {
-    public String numPlus(Double num1, Double num2) {
+    public Double numPlus(Double num1, Double num2) {
         if (num1 == null || num2 == null){
             throw new IllegalArgumentException("Не указан один из параметров.");
         }
-        Double sum = num1 + num2;
-        String result = num1 + " + " + num2 + " = " + sum ;
-        return result;
+        return num1 + num2;
     }
 
-    public String numMinus(Double num1, Double num2) {
+    public Double numMinus(Double num1, Double num2) {
         if (num1 == null || num2 == null){
             throw new IllegalArgumentException("Не указан один из параметров.");
         }
-        Double sum = num1 - num2;
-        String result = num1 + " - " + num2 + " = " + sum ;
-        return result;
+        return num1 - num2;
     }
 
-    public String numMultiply(Double num1, Double num2) {
+    public Double numMultiply(Double num1, Double num2) {
         if (num1 == null || num2 == null){
             throw new IllegalArgumentException("Не указан один из параметров.");
         }
-        Double sum = num1 * num2;
-        String result = num1 + " * " + num2 + " = " + sum ;
-        return result;
+        return num1 * num2;
     }
 
-    public String numDivide(@NotNull Double num1, Double num2) {
+    public Double numDivide(@NotNull Double num1, Double num2) {
         if (num1.isNaN() || num2 == null){
             throw new IllegalArgumentException("Не указан один из параметров.");
         } else if (num2 == 0){
             throw new IllegalArgumentException("Деление на ноль!");
         }
-        Double sum = num1 / num2;
-        String result = num1 + " / " + num2 + " = " + sum ;
-        return result;
+        return num1 / num2;
     }
 }

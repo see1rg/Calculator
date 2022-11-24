@@ -16,26 +16,31 @@ public class CalculateController {
     }
 
     @GetMapping("/minus")
-    public String minusCalculate(@RequestParam("nums1") Double num1, @RequestParam("nums2") Double num2){
-        return this.calculateService.numMinus(num1,num2);
+    public String minusCalculate(@RequestParam("nums1") Double num1, @RequestParam("nums2") Double num2) {
+        return generateMessage(num1, num2, "-", calculateService.numMinus(num1, num2));
     }
 
     @GetMapping("/plus")
-    public String plusCalculate(@RequestParam("nums1") Double num1, @RequestParam("nums2") Double num2){
-        return this.calculateService.numPlus(num1,num2);
+    public String plusCalculate(@RequestParam("nums1") Double num1, @RequestParam("nums2") Double num2) {
+        return generateMessage(num1, num2, "+", calculateService.numPlus(num1, num2));
     }
 
     @GetMapping("/multiply")
-    public String multiplyCalculate(@RequestParam("nums1") Double num1, @RequestParam("nums2") Double num2){
-        return this.calculateService.numMultiply(num1,num2);
+    public String multiplyCalculate(@RequestParam("nums1") Double num1, @RequestParam("nums2") Double num2) {
+        return generateMessage(num1, num2, "*", calculateService.numMultiply(num1, num2));
     }
 
     @GetMapping("/divide")
-    public String divideCalculate(@RequestParam("nums1") Double num1, @RequestParam("nums2") Double num2){
-        return this.calculateService.numDivide(num1,num2);
+    public String divideCalculate(@RequestParam("nums1") Double num1, @RequestParam("nums2") Double num2) {
+        return generateMessage(num1, num2, "/", calculateService.numDivide(num1, num2));
     }
 
     @GetMapping("/")
-    public String greeting(){
-    return "Добро пожаловать в калькулятор";}
+    public String greeting() {
+        return "Добро пожаловать в калькулятор";
+    }
+
+    private String generateMessage(Double a, Double b, String operation, Double result) {
+        return String.format("%f %s %f = %f", a, operation, b, result);
+    }
 }

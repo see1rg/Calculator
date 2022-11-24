@@ -1,40 +1,63 @@
 package com.skypro.calculator.service;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static com.skypro.calculator.service.Constant.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CalculateServiceTest {
 
-   private final CalculateService out = new CalculateService();
-
-
-
    @Test
-    void TwoPlusThreeShouldBeFive() {
+    void ThreePlusFourShouldBeSeven() {
        CalculateService out = new CalculateService();
-       Assertions.assertEquals("3.0 + 4.0 = 7.0",out.numPlus(3D,4D));
+       assertEquals(THREE + FOUR,out.numPlus(THREE,FOUR));
+    }
+
+    @Test
+    void TwoPlusThreeShouldBeFive() {
+        CalculateService out = new CalculateService();
+        assertEquals(TWO + THREE,out.numPlus(TWO,THREE));
     }
 
     @Test
     void SevenMinusThreeShouldBeFore() {
         CalculateService out = new CalculateService();
-        Assertions.assertEquals("7.0 - 3.0 = 4.0",out.numMinus(7D,3D));
+        assertEquals(SEVEN - THREE,out.numMinus(SEVEN,THREE));
+    }
+
+    @Test
+    void SevenMinusFiveShouldBeTwo() {
+        CalculateService out = new CalculateService();
+        assertEquals(SEVEN - FIVE,out.numMinus(SEVEN,FIVE));
     }
 
     @Test
     void SevenMultiplyThreeShouldBeTwentyOne() {
         CalculateService out = new CalculateService();
-        Assertions.assertEquals("7.0 * 3.0 = 21.0",out.numMultiply(7D,3D));
+        assertEquals(SEVEN * THREE,out.numMultiply(SEVEN,THREE));
     }
 
     @Test
-    void TenDivideTwoShouldBeFive() {
+    void FiveMultiplyThreeShouldBeFifteen() {
         CalculateService out = new CalculateService();
-        Assertions.assertEquals("10.0 / 2.0 = 5.0",out.numDivide(10D,2D));
+        assertEquals(FIVE * THREE,out.numMultiply(FIVE,THREE));
+    }
+
+    @Test
+    void SixDivideTwoShouldBeThree() {
+        CalculateService out = new CalculateService();
+        assertEquals(SIX /TWO,out.numDivide(SIX,TWO));
+    }
+
+    @Test
+    void TwoDivideOneShouldBeTwo() {
+        CalculateService out = new CalculateService();
+        assertEquals(TWO /ONE,out.numDivide(TWO,ONE));
     }
 
     @Test
     void TenDivideZeroShouldBeThrow() {
         CalculateService out = new CalculateService();
-        Assertions.assertThrows(IllegalArgumentException.class, () -> out.numDivide(10D,0D));}
+        assertThrows(IllegalArgumentException.class, () -> out.numDivide(FIVE,ZERO));}
     }
